@@ -1,0 +1,23 @@
+{
+  "name": "daily",
+  "version": "1.0.0",
+  "description": "git流程\r 1.git config --global --list\r 如果没有配置，\r git config --global user.name\r git config --global user.email",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hcylyjk/daily.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hcylyjk/daily/issues"
+  },
+  "homepage": "https://github.com/hcylyjk/daily#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
