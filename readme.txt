@@ -1,4 +1,4 @@
-git流程
+﻿git流程
 1.git config --global --list
 git add .  ->刚开始提交是有很多文件，提交所有新文件和被修改的文件，不包括被删除文件
 git add -A  ->提交所有改变
@@ -60,6 +60,7 @@ git push  推送到远程
 
 
 git clone https://github.com/hcylyjk/gitlear.git  克隆项目直接版本仓库
+克隆之后正常操作，但要进入master才行
 
 
 
