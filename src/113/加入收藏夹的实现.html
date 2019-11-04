@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我会加油的</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    body{
+        border:50px solid #000;
+    }
+    li{
+        list-style:none;
+    }
+    .left{
+        float:right;
+        padding-right:50px;
+        color:red;
+    }
+    .failer{
+        color:red;
+    }
+    </style>
+</head>
+
+<body>
+    <a href="#" onclick="addFavorite()">加入收藏夹</a>
+    <p class="failer"></p>
+    <div class="left">
+       
+
+    </div>
+    <script>
+        var warnText = document.querySelector('.failer');
+        var oDiv = document.querySelector('.left');
+        function addFavorite() {
+            var url = window.location.href;
+            var title = document.title;
+            console.log(url, title);
+            // 获取是什么浏览器
+            var liu = navigator.userAgent.toLowerCase();
+            console.log(liu);
+            if(liu.indexOf('360es')>-1){
+                warnText.innerText = '360功能限制，收藏失败，请按Ctrl + D 手动添加';
+                setTimeout(function(){
+                    warnText.innerText ="";
+                },3000)
+            }else if(liu.indexOf('chrome')>-1){
+               var oLi = document.createElement('a');
+               oLi.href=url;
+               oLi.innerText = title;
+                oDiv.appendChild(oLi);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

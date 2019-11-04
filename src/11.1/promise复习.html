@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //promise对象用于表示一个异步操作的最终状态（完成或失败），以及其返回值
+        //promise最直接的好处就是链式调用
+        //连续执行两个或者多个异步操作是一个常见的需求，then函数会返回一个全新的promise
+        new Promise((resolve,reject)=>{
+            console.log('1');
+            resolve();
+        }).then(()=>{
+            throw new Error('错啦')
+            console.log('2')
+        })
+        .catch(()=>{
+            console.log('3');
+        })
+        .then(()=>{
+            console.log('4');
+        })
+
+
+        //promise构造函数
+        
+    </script>
+    
+</body>
+</html>

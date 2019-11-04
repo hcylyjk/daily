@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES</title>
+</head>
+<body>
+   <button onclick ="hj()">点击</button>
+    <script>
+         function hj(x){
+            var h =2;
+            console.log(x);
+            
+            console.log(this);
+            (()=>{
+                console.log(this);//->window
+            })();
+        }
+        //ES6-ECMAScript2015
+        //let 1.不允许重复声明变量，2.仅在块级作用域内有效 3.形参和变量不能有相同的名字4.声明变量不会提升
+        //let一定要声明之后使用
+
+        //暂时性死区TDZ：就是绑定在一个区块，不受外部影响，例子如下：
+        // var v =3;
+        // if(true){
+        //     console.log(v);//报错
+        //     let v = 2;
+        // }
+
+        //不希望改变的变量用const,定义常量,定义之后，内存地址就已经固定了，所以一开始就要初始化
+        const PI = 3.14;
+
+
+        //箭头函数不能是new,不是构造函数,没有arguments
+
+        //箭头函数 this的指向寻找上一层函数的指向
+       
+
+        //第二种
+        // var btn = document.querySelector('button');
+        // btn.onclick = function(){
+        //     (()=>{console.log(this)})();//->btn
+        // }
+
+        //字符串模板 ${}
+
+
+        //解构赋值 ->从数组和对象中提取值，对变量赋值，
+        var obj1 = {
+            a:1,
+            b:6,
+            g:7
+        }
+        var arr =[9,0,4];
+        function fn(obj,arr){
+            var {a,b,g} = obj;
+            var [h,j,k] = arr;
+            console.log(g,b,a);
+            console.log(h,j,k);
+        }
+        fn(obj1,arr);
+
+
+        
+    </script>
+</body>
+</html>

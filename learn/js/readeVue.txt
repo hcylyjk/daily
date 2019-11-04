@@ -1,0 +1,24 @@
+1.Object.freeze()方法冻结一个对象。即不能添加新的属性，不能删除已有属性，
+不能修改该对象已有属性的可枚举性、可配置性、可写性，
+以及不能修改已有属性的值。此外，冻结一个对象后该对象的原型也不能被修改。
+freeze() 返回和传入的参数相同的对象
+
+2.typeof只能区分基本类型，对于数组，对象，都统一返回Object
+  instanceof 先检测是否是对象，再进一步检测是什么类型
+  Object.prototype.toString()得到[[Class]]属性，可以获取任意的数值类型
+  例如怕[Object Array]
+
+
+  3.改变 this 的指向有以下几种方法：
+    使用 ES6 的箭头函数
+    在函数内部使用 that = this（或_this = this）
+    使用 apply、call、bind
+    new 实例化一个对象
+
+    4.只有通过 Object.prototype.toString.call()
+    才能访问到[[class]]属性
+    Object.prototype.toString.call(a).slice(8,-1)返回a 的类型
+
+    5.isFinite()isFinite() 函数用于检查其参数是否是无穷大
+    有限返回true ,无限返回false
+

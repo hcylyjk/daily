@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取地址栏参数的方法</title>
+</head>
+<body>
+    
+    <script>
+          //通过名字获取值
+         String.prototype.getQuery = function(name){
+             var re = new RegExp("(^|&)"+name+"=([^&]*)(&|$)");
+             var r = this.substr(this.indexOf("\?")+1).match(re);
+             console.log(r);
+             if(r!=null)
+             return unescape(r[2]);
+             return null;
+         }
+        var url = window.location.href;
+        // console.log(url);
+        console.log(url.getQuery('age'));
+    </script>
+</body>
+</html>

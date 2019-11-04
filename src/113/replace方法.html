@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>replace()</title>
+</head>
+<body>
+    
+    <script>
+        function cached(fn){
+            var cache = Object.create(null);
+           
+            return (function chached(str){
+                var hit = cache[str];
+                console.log(cache[str])
+                return hit || (cache[str] = fn(str))
+            })
+        }    
+        var camelizeRE = /-(\w)/g;
+        var camelize = cached(function(str){
+            return str.replace(camelizeRE,function(_,c){
+                return c? c.toUpperCase():'gg';
+            })
+        });
+        console.log(camelize(''));//->(cache[str] = fn(str)
+
+        //replace(regExp/str,str/fn)并返回更换后的字符串
+        //参数都为字符串
+        var text = 'cat,bkl,sat,3at,ukl';
+        var result = text.replace('bat','hcy');
+        console.log(result);
+        //regExp,str的情况
+        var result = text.replace(/3at/g,'love');
+        console.log(result);
+
+        //regExp对象的捕获组
+        var result = text.replace(/(.at)/g,'$($1)');
+        console.log(result);
+
+        //regExp fn  ma->所匹配值，index出现的下标，原字符串
+        var result = text.replace(/at/g,function(ma,index,str){
+            console.log(ma + ' '+index + str);
+            return 'ond'
+        });     
+        console.log(result); 
+    </script>
+</body>
+</html>

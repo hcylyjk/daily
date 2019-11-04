@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dom的封装</title>
+</head>
+<body>
+    <div id ="id1">点击</div>
+    <script>
+    function Elem(id){
+        this.elem = document.getElementById(id);
+    }
+    Elem.prototype.html = function(val){
+        var elem = this.elem;
+        if(val){
+            elem.innerHTML = val;
+            console.log(this);
+            return this;
+        }else{
+            return elem.innerHTML;
+        }
+    }
+    Elem.prototype.on = function(type,fn){
+        var elem = this.elem;
+        elem.addEventListener(type,fn);
+        console.log(this)
+        return this;
+    }
+    var div1 = new Elem('id1');
+    div1.on('click',function(){
+        div1.html('test');
+        console.log('dian');
+    })
+  
+    
+    </script>
+</body>
+</html>

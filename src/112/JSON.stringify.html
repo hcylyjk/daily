@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSON.stringify()的使用</title>
+</head>
+<body>
+    
+    <script>
+       //JSON.stringify(data,null,space) data->有效的JSON字符串 第二个参数一般为null  space数字表示空格
+       const data2 = {
+           a:'hcy',
+           fn:function(){
+               return true
+           },
+           b:null,
+           c:undefined,//->不能进行转换
+           info:{
+               age:12,
+               sex:'male'
+           }
+       }  
+       function fn(val){
+           val.slice(4,3);
+       }
+       console.log(JSON.stringify(data2,null,2))
+        JSON.stringify(data2,function(key,val){
+            console.log("key is",key);
+            console.log("val is",val);
+            return val
+            
+        })
+        
+    </script>
+</body>
+</html>

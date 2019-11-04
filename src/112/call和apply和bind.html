@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>改变this的指向</title>
+</head>
+<body>
+    
+    <script>
+    //改变函数体内部的this指向
+    //call 和 apply二者的作用完全一样，只是接受参数的方式不太一样。
+    var foo = {
+        name:'hacu',
+        logName:function(){
+           // console.log(this);
+            
+            //console.log(name);
+        }
+    }
+    var bar = {
+        name : 'hcy'
+    }
+    foo.logName.call(bar);
+//在非严格模式下当我们第一个参数传递为null或undefined时，
+//函数体内的this会指向默认的宿主对象，在浏览器中则是window
+    //求类数组的最大值
+    (function(){
+        var max = Math.max.apply(null,arguments);//将参数传给默认宿主
+        //var max = Math.max(arguments)->NaN
+        // console.dir(Math)
+        // console.log(this);
+        // console.log(max);
+        
+    })(3,45,1,3,0);
+
+    function b(a,b){
+        //console.log(this,a,b);
+        
+    }
+    var o ={
+        a:1
+    }
+    // b.call(o,4,6);
+    // b.call(null,1,2)//->window
+    // b.apply(o,[3,7]);
+
+    // function A(){
+    //     this.a=1;
+    //     console.log(a);
+        
+    // }
+    // function b(){
+    //     A.call(this);
+    //     this.b = 1
+    // }
+    // console.log(a);
+
+    //接收数组类型参数
+    var a = [4,5,7,32];
+    //console.log(Math.max(...a));
+
+    (function(){
+        var max = Math.max(null,...arguments);
+        //console.log(max);
+    })(2,56,3,5);
+
+    var name = 'hcy';
+    var obj = {
+        name:'jk',
+        objAge:this.age,
+        mu:function(){
+            console.log(this.name + this.age);
+            
+        }
+    }
+    console.log(obj.objAge);
+    obj.mu();
+
+    //箭头函数中的 this 只和定义它时候的作用域的 this 有关，
+    //而与在哪里以及如何调用它无关，同时它的 this 指向
+    //是不可改变的
+
+
+    var obj = {
+        name:'hcy',
+        f1:function(){
+            console.log(this);
+        },
+        f2:function(){
+            console.log(this);
+            setTimeout(()=>{
+                console.log(this.name);
+                
+            },1000)
+        }
+    }
+    //obj.f2();
+    var bn = obj.f2;
+    bn();
+
+
+    //
+    </script>
+</body>
+</html>

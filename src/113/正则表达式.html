@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式的复习</title>
+</head>
+<body>
+    
+    <script>
+        //内置构造函数
+        var reg = new RegExp("hcy","g");
+        console.dir(reg)
+        //直接建立
+        var reg = /hcy/g;    
+        //字面量字符->直接表示匹配的字符串，是固定的了
+        //元字符：不代表字符本身字面的意思，只是更好的辅助字符而已
+        //点字符(.)匹配任意字符，除特殊字符外
+        var reg = /2.4/;
+
+        //^$表示从开始到结尾所包含的字符
+        //选择符 | 
+        var reg = /11|22|44/;
+        var reg = /2(5|6)8/;
+        
+    </script>
+</body>
+</html>

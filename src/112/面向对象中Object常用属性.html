@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面向对象中Object常用属性</title>
+</head>
+<body>
+    
+    <script>
+    console.dir(Object)    
+    console.dir(Object.prototype)  //Object的原型对象
+    console.dir(Object.prototype.constructor);//特定的函数，用户创建一个对象的原型
+    // console.log(Object)    
+    // console.log(Object.prototype)  //Object的原型对象
+    // console.log(Object.prototype.constructor);
+    //console.log(Object === Object.prototype.constructor) //->true
+
+    function Person(name,fn){
+        this.name = name;
+        this.fn = fn;
+    }
+    var tom = new Person({a:1,b:'hcy',c:function(){
+        console.log(this.a);
+    }},function(){
+        console.log(this.b);
+    });
+    console.log(tom.name["a"])
+    console.log(typeof tom)
+    //1.Object.prototype.hasOwnProperty(prop)返boolean,表示某个对象是否含有prop这个属性
+    //而且此属性非原型链接继承的。只是验证自身有没有这个属性
+    console.log(tom.hasOwnProperty("name"));//->true
+    console.log(tom.hasOwnProperty('fn'));//->true
+    console.log(tom.name.hasOwnProperty('a'));//->true
+    console.log(tom.hasOwnProperty('a'));//->false
+
+    //2.Object.prototype.isPrototypeOf()返boolean，表示指定的对象是否在本对象的原型链中
+    console.log(Object.isPrototypeOf(tom));//->false
+    //3.Object.prototype.propertyIsEnumerable()判断指定的属性是否可枚举
+    console.log(tom.name.propertyIsEnumerable('a'));//->true
+    
+    
+    </script>
+</body>
+</html>

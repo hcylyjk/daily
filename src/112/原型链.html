@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型链</title>
+</head>
+<body>
+    <div id="id1">点击</div>
+    <script>
+        //function Man(){}
+        //console.log(Man.prototype);
+        function Man(){}
+        function Father(){
+            this.name = 'kv'
+        }
+        var m = new Man();
+       // console.dir(m);
+        //Man.prototype = new Father();
+        //console.dir(Man);
+        //console.dir(Father);
+        var obj = {
+            // name:'havu',
+            // age:'33',
+            // gh:'d'
+        }
+      
+            // if(obj.hasOwnProperty(key)){
+            //     console.log(obj.hasOwnProterty)
+            //     console.log(obj[key])
+            // }else{
+            //     console.log('没有自身属性')
+            // }
+
+         
+            var obj ={
+                '0':'a',
+                '1':'b',
+                arr:[1],
+            }
+            function Foo(arr2){
+                this.arr2 = [1];
+            }
+           //Foo.prototype = obj;
+            console.dir(Foo);
+            var foo1 = new Foo();
+            foo1.arr2.push(2);
+            // console.dir(foo1)
+            // console.log(foo1.arr);
+            // console.log(foo1.__proto__===Foo.prototype);
+            // console.log(Foo.__proto__ === Function.prototype)
+            // console.log(Foo.prototype.__proto__ ===  Object.prototype);
+            // console.log(   Object.prototype.__proto__ ===null);
+            //foo1.__proto__ -> Foo.prototype ->Foo.prototype.__proto__ -> Function.prototype ->Function.prototype.__proto__ -> Object.prototype ->Object.prototype.__proto__ ->null
+            console.log(foo1.__proto__=== Foo.prototype);
+            console.log(Foo.__proto__ === Function.prototype );
+            console.log(Function.prototype.__proto__ === Object.prototype);
+            console.log(Foo.prototype.__proto__ === Object.prototype);
+            
+            console.log(Object.prototype.__proto__ === null);
+            
+            
+            //foo1.__proto__ ->Foo.prototype ->Foo.__proto__ 
+            //->Function.prototype ->Function.prototype.__proto__ 
+            //->Object.prototype ->Object.prototype.__proto__ ->null
+            console.log(Function.prototype.__proto__  === Foo.prototype.__proto__ );
+            
+            //foo1.__proto__ -> Foo.prototype ->Foo.prototype.__proto__ 
+            //->Object.prototype->Object.prototype.__proto__ ->null
+
+    </script>
+</body>
+</html>

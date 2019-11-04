@@ -1,12 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>promise</title>
 </head>
+
 <body>
-    
+    <input type="text" class="input">
+    <button class="btn">点击</button>
+
+    <script>
+        var btn = document.querySelector('.btn');
+        var input = document.querySelector('.input');
+        const myAjax = function (url,data) {
+            console.log(url);
+            const promise = new Promise((resolve, reject) => {
+                console.log(resolve, reject);
+                const stateChange = function () {
+                    console.log(this);
+                    console.log(this.readyState)
+                    if (this.readyState !== 4) {
+                        return;
+                    }
+                    if (this.staus === 200) {
+                        resolve(this.response);
+                    } else {
+                        reject(new Error(this.statusText))
+                    }
+                };
+
+                const myHttp = new XMLHttpRequest();
+                myHttp.open('GET', url, 'true');
+                myHttp.onreadystatechange = stateChange;
+                myHttp.responseType = 'json';
+                myHttp.setRequestHeader('Content-Type', 'application/json');
+                myHttp.send(JSON.stringify(data));
+            })
+            console.log(promise);
+            return promise;
+        }
+        btn.onclick = function () {
+            let url = './post.php';
+            let data = {age:input.value};
+            myAjax(url,data).then(res => {
+                console.log(res);
+            }).catch(err => {
+                console.log(data);
+                console.log(err);
+            });
+        }
+
+    </script>
 </body>
+
 </html>

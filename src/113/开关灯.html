@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <img src="off.png" onclick="swiff()">
+    <script>
+    function swiff(){
+        var oImg = document.querySelector('img');
+        var src = oImg.src;
+        if(src.match('off')){
+            console.log(src.match("off"));//返回的是数组
+            oImg.src="on.png";
+        }else{
+            console.log(src.match("off"));//没有返回null
+            oImg.src="off.png";
+        }
+    }
+
+    //总结：实现的关键是src转换的条件
+    //match()方法，在字符串中查找到相应的值并返回这些值，一般只返回第一个，后面的将不匹配并返回，除非有全局
+    </script>
+</body>
+</html>
