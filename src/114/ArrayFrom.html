@@ -16,23 +16,44 @@
     </ul>
 
     <script>
-        //Array.from()将伪数组转成真正的数组
+        //Array.from(obj,map)将伪数组转成真正的数组
         var lis = document.querySelectorAll('.list li');//类数组、伪数组
         //console.log(lis);
        // console.dir(lis)
         //console.log(lis);
+        var arr2 = Array.from(lis,function(item){
+            return item;
+        });
+        //console.log(arr2);
         function toArr(obj){
-            console.log(obj);
-            console.log(this);
+            //console.log(obj);
+            //console.log(this);
             var _this = this;
             obj.forEach(function(item){
                 _this.push(item);
                 
             });
-           
             return this;
         }
-        console.log(toArr.call([],lis));
+        //var arr = toArr.call([],lis);
+        //arr.push('9');
+        //console.log(arr);
+        //console.log(toArr.call([],lis));
+       // console.log(Array.from('foo'));
+        console.log(Array.from(new Map([[3,4],[9,8],[6,8]])));
+        const set = new Set(['ff','hcy','gh','ff']);
+       
+        console.log( Array.from(new Set(['ff','hcy','gh','ff'])));
+        
+
+        //总结：Array.from(arrayLike,mapFn,thisArg)  ->返回一个新的数组实例
+        //arrayLike伪类数组对象或可迭代对象（Symbol iterator）
+        //mapFn每个元素会执行该回调函数
+        //thisArg执行mapFn时this指向的对象
+        //1.从String生成数组-》将字符串一个个拆开组成数组 Array.from(str)
+       //2.从Set生成数组
+       //3.从类数组对象（arguments)生成数组
+       
     </script>
 </body>
 </html>

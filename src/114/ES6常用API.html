@@ -7,20 +7,35 @@
     <title>ES</title>
 </head>
 <body>
-   <button onclick ="hj()">点击</button>
+   <button >点击</button>
     <script>
-         function hj(x){
-            var h =2;
-            console.log(x);
-            
+        var btn = document.querySelector('button');
+        // btn.onclick = function(){
+        //     //let _this = this;
+        //     (() => {console.log(this)})();
+        // }
+        btn.onclick = (()=>{
             console.log(this);
-            (()=>{
-                console.log(this);//->window
-            })();
-        }
+        }).bind(btn);
+        //  function hj(x){
+        //     var h =2;
+        //     console.log(x);
+        //     console.log(this);
+        //     (()=>{
+        //         console.log(this);//->window
+        //     })();
+        // }
         //ES6-ECMAScript2015
-        //let 1.不允许重复声明变量，2.仅在块级作用域内有效 3.形参和变量不能有相同的名字4.声明变量不会提升
+        //let 1.在同一个块级作用域内，不允许重复声明变量，2.仅在块级作用域内有效 3.形参和变量不能有相同的名字4.声明变量不会提升
         //let一定要声明之后使用
+        let a= 1;
+        function fh(){
+            let a= 3;
+            console.log(a);
+        }
+        fh();
+        //let a = 5;
+        console.log(a);
 
         //暂时性死区TDZ：就是绑定在一个区块，不受外部影响，例子如下：
         // var v =3;
@@ -34,6 +49,7 @@
 
 
         //箭头函数不能是new,不是构造函数,没有arguments
+
 
         //箭头函数 this的指向寻找上一层函数的指向
        
@@ -61,6 +77,14 @@
             console.log(h,j,k);
         }
         fn(obj1,arr);
+
+
+        //总结：1.let、const、var的区别：
+        //1.let,const作用于块级作用域，没有变量的提升，重复声明变量会报错
+        //2.const声明的常量是不可变的，准确点说是内存地址是不可变的，声明时必须初始化。
+        //3.只要let存在于这个块级作用域内，它所声明的变量就会绑定在这个区域，把这个叫做暂时性死区（TDZ）
+        //4.var定义的变量，作用域是整个封闭函数，是全局的
+        //5.var定义的变量会使变量提升，可以在变量声明之前使用。可以重复声明变量
 
 
         

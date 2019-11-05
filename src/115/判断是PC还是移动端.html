@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=sw, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //PC平台 -> win32 / win64 / window / PC.indexOf(win) 
+        //苹果系统  mac68k macppc macintosh macintel
+        var platPc = function () {
+            var PC = navigator.platform.toLowerCase();
+            var isMac = ((PC == 'mac68k') || (PC == 'macppc') || (PC == 'macintosh') || (PC == 'macintel'));
+            var isWPC = ((PC == 'win32') || (PC == 'win64') || (PC == 'window') || (PC.indexOf('win') > -1));
+            //isPC -> true /false 判断是否符合
+            console.log(PC);
+            if (isWPC || isMac) {
+                return true;
+            }
+            return false
+        }
+        //移动端
+        var mobile = function () {
+            var urA = navigator.userAgent;
+            console.log(urA)
+            var MB = ["AIX", "Amiga", "BeOS", "DragonFly", "FreeBSD", "GNU", "Haiku", "HP-UX", "IRIX", "Joli", "Java", "Macintosh", "Minix", "MorphOS", "NetBSD", "OpenBSD", "PClinuxOS", "QNX x86pc", "SunOS", "Ubuntu", "Mint", "Red Hat", "Slackware", "SUSE", "PCLinuxOS", "Debian", "Fedora", "CentOS", "Vine", "Arch Linux", "Gentoo", "Kanotix", "Mandriva"];
+            for (var i = 0, len = MB.length; i < len; i++) {
+                if(MB[i].indexOf(urA)>-1){
+                    return true;
+                };
+            }
+            return false;
+        }
+        var pc1 = platPc();
+        var mb1 = mobile();
+        function getVl(pc,mb){
+            if(pc){
+                console.log('我是PC端');
+                return;
+            }
+            if(mb){
+                console.log('我是移动端')
+            }
+        }
+        getVl(pc1,mb1);
+
+        //总结：navigator浏览器相关信息的对象
+        //navigator.userAgent用来区分设备和浏览器
+        //navigator.platform显示浏览器使用的平台，比如window系统等等
+
+    </script>
+</body>
+
+</html>

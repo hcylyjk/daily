@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串模板</title>
+</head>
+
+<body>
+    <p></p>
+    <h3></h3>
+    <script>
+        // `${变量名}`    
+
+        //     var a= 2;
+        //     var b=5;
+        //     var c= 6;
+        //     var fn = (()=>{
+        //         //console.log(a);
+        //         let v = 66;
+        //         console.log(`${v}`);
+        //     //oBox.innerHTML += ''+`${v}`;
+        //     document.querySelector('h3').innerHTML = `${v}`;
+        //     return v;
+        //    });
+
+        //    document.querySelector('p').innerHTML = `
+        //         <ul>
+        //             <li>${a}</li>
+        //             <li>${b}</li>
+        //             <li>${c}</li>
+        //             <li>${fn()}</li>
+
+        //     `
+
+        //模板中调用函数
+
+
+        //模板字符串之中嵌套赋值模板
+        let data = [{
+            id: 1,
+            name: 'hcy'
+        }, {
+            id: 2,
+            name: 'yjk'
+        }];
+        const temp = add => {
+            return `
+                <table>
+                    ${add.map(addr => {
+                return `
+                        <tr><td>${addr.id}</td></tr>
+                        <tr><td>${addr.name}</td></tr>
+                        `}).join('')
+
+                }
+                </table>
+            `
+
+        }
+        console.log()
+        document.querySelector('body').innerHTML = temp(data);
+
+        //字符串模板嵌套的，一层字符串模板可以接着一层，方便可用  `${}`
+
+
+
+
+    </script>
+</body>
+
+</html>

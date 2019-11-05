@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //Set成员唯一性，没有重复，类似数组
+        //创建一个Set
+        // var s1 = new Set();
+        // var s2 = new Set(['a','b','c']);
+        // //一句话实现数组去重
+        // var s3 = [...new Set([2,4,5,2,4,3,4,67])];
+        // console.log(s3);
+        //size,add,delete,has(),clear()
+
+        //访问Set的值的两种方法
+        //1.转成数组
+        // var arr= [...s2];
+        // console.log(arr[2]);
+        //2.遍历
+        // s2.forEach(function(item,index,set){
+        //     console.log(item);
+            
+        // });
+
+        //for of用于遍历数组，类数组，Set , Map
+        // for (let val of s2){
+        //     console.log(val);
+        // }
+        // const set1 = new Set([2,3,5,6,7,89]);
+        // console.log(set1);
+        // console.log(set1.size);//size
+        // console.log(set1.add(666));//
+        // console.log(set1.delete(5));//删除成功返回true
+        // console.log(set1);
+        // console.log(set1.has(5));//->false
+       // console.log(set1.values());
+        //console.log(set1.clear());//->undefined
+        //console.log(set1.length);//->undefined
+            //console.log(new Set().length)
+            //console.dir(set1.prototype)
+
+            let mySet = new Set([7,8,'hdh',66,77,8,7]);
+            for(let item of mySet){
+                //console.log(item);
+            }
+            for(let item of mySet.keys()){
+                //console.log(item);
+            }
+            for(let [key,value] of mySet.entries()){
+               // console.log(key);
+            }
+            var myArr = Array.from(mySet);
+            //console.log(myArr);
+            //console.log([...mySet])
+            mySet.forEach(function(value){
+                //console.log(value);
+                
+            })
+
+            var map = new Map([['a'],['b',66],['io',88]]);
+            map.set('j',777);
+            console.log(map);
+            console.log(map.get('j'));//获取某一个值
+            console.log(map.get('a'));//->undefined
+            map.delete('a');
+            console.log(map);
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //总结：Set对象允许存储任何类型的唯一值  new Set([])返回新的Set对象 初始化 Set 可以接受一个数组或类数组对象作为参数，也可以创建一个空的 Set
+        //Set中的元素只会出现一次，即Set中的元素是唯一的
+        //NaN和undefined都可以被存储在Set 中， NaN之间被视为相同的值（尽管 NaN !== NaN）。
+        //new Set().size ->获取该对象的长度
+        //new Set().add();相当于数组push的方法，就是添加元素
+        //new Set().delete()删除某一元素，返回true
+        //new Set().has()判断某元素是否存在，存在返true,否false
+        //new Set().clear()清除所有，返回undefined
+        //Set.length()的属性值为undefined
+        //Set.prototype表示Set构造器的原型，允许向所有Set对象添加新的属性
+
+        //获取Set的值的方法
+        //1.遍历 for of
+        //2.用Array.from()将其变成数组，通过下标即可获取
+        //3.Set.forEach(fn)
+       // 一句话实现数组去重   var s3 = [...new Set([2,4,5,2,4,3,4,67])];
+
+
+
+       //Map的总结：Map 是一个构造函数，用来生成 Map 数据结构，它类似于对象，也是键值对的集合，
+       //但是“键”可以是非字符串， 初始化 Map 需要一个二维数组，或者直接初始化一个空的 Map
+    //Map.has(键)判断某个键的是否存在
+    //Map.get(键)获取某个键的值
+    //Map.set(key,value)设置值
+    //Map.delete(key)删除key以及相关的值
+    //遍历forEach() / for of都可以
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>扩展运算符</title>
+</head>
+<body>
+    
+
+    <script>
+        //解决参数和对象数组未知情况的运算符有两种：对象扩展运算符与rest运算符
+        
+        //传递多个参数，此时的...arg没有固定的值
+        function test(...arg){
+            console.log(...arg);
+            console.log(arg);//直接转成数组
+            console.log(arg[0]);
+            
+        }
+        test(2,4,5,6);
+
+        //解决数组深赋值问题
+        var arr = [4,66,88,2];
+        var arr1 = [...arr];
+        arr1.push(89);
+        arr.push(666)
+        console.log(arr1);
+        console.log(arr)
+
+        //循环rest运算符
+        var srr = [0,4,5,6,7,8,9,2];
+        function test1(first,...arg){ //...arg组合数组 rest运算符
+            for(let val of arg){
+                console.log(arg);
+                console.log(val);
+                
+            }
+        }
+        test1(...srr); //展开数组去传参， 扩展运算符
+
+        console.log(...[4,7,9]);
+
+
+        //总结： 扩展运算符用于展开该对象，rest运算符用于接收和组合数组 其功能是把数组或类数组对象（Symbol iterator)
+    </script>
+</body>
+</html>

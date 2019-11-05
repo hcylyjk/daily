@@ -22,3 +22,9 @@ freeze() 返回和传入的参数相同的对象
     5.isFinite()isFinite() 函数用于检查其参数是否是无穷大
     有限返回true ,无限返回false
 
+    6.str.charAt(index)返index对应的值，str.slice(start,end)截取，不包括end
+
+    7.str.replace(old,new)old可以是正则，将被替换掉
+
+    8.fn.bind()改变this指向，一般用于匿名函数
+

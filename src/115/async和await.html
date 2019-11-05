@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //async function返回AsyncFunction对象的异步函数，会通过隐式Promise返回其结果
+        //ES2017 标准引入了 async 函数，
+        //使得异步操作变得更加方便，async其实本质是Generator函数的语法糖
+        // async表示函数里有异步操作
+        // await表示在后面的表达式需要等待结果
+        // async函数返回的是一个Promise对象，
+        // 可以使用then方法添加回调函数，一旦遇到await就会先返回。
+        function rel() {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve('jj');
+                    return 'hcy'
+                }, 2000)
+            })
+        }
+        //console.log(rel())   
+        // rel().then(function(val){
+        //     console.log(val);
+        // })
+
+        async function test() {
+            console.log('111');
+            var result = await rel();
+            console.log(result);
+        }
+        console.log(test())
+    </script>
+</body>
+
+</html>

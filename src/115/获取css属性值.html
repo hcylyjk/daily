@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            display: block;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">jfjfj</div>
+    <script>
+        function getCurrentStyle(obj, style) {
+            if (obj.currentStyle) {
+                return obj.currentStyle[style];
+            } else if (window.getComputedStyle) {
+                return document.defaultView.getComputedStyle(obj, null)[style]
+            }
+            return null;
+        }
+        var oDiv = document.querySelector('.box');
+        console.log(getCurrentStyle(oDiv, 'display'));
+
+        //总结：document.defaultView返回当前文档关联的window对象
+        //window.getComputedStyle(obj,伪类)[prop]返回obj元素的prop的对应的css样式  -》w3c标准浏览器
+        //obj.currentStyle[prop] IE浏览器获取CSS样式
+        //Math.random().toString(16).substring(2)->随机14位
+        //Math.random().toString(16).substr(2,4)随机四位
+        // toFixed(num)四舍五入，num指定的位数
+
+        console.log(+new Date())//->日期转数字
+
+        console.log(Math.random().toString(16).substring(2)); //->随机14位
+        console.log(Math.random().toString(16).substr(2, 4));//随机四位
+
+        // toFixed(num)四舍五入，num指定的位数
+    </script>
+</body>
+
+</html>

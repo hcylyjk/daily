@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态添加Script</title>
+</head>
+<body>
+    
+
+    <script>
+        var oHead = document.getElementsByTagName('head')[0];
+        function addScript(){
+            var script = document.createElement('script');
+            script.type="text/javascript";
+            oHead.appendChild(script);
+            console.log(script.readyState);
+            
+
+        }   
+        addScript()
+    </script>
+</body>
+</html>
