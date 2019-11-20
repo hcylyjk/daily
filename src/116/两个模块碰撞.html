@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>碰撞</title>
+    <style>
+        .box1 {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: blue;
+            cursor: move;
+            z-index:200;
+            top:20px;
+            left:30px;
+        }
+
+        .box2 {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 300px;
+            left: 400px;
+            background-color: yellow;
+            z-index:10;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+
+    <script>
+        var oBox1 = document.querySelector('.box1');
+        var oBox2 = document.querySelector('.box2');
+        oBox1.onmousedown = function (e) {
+            var ev = e || event;
+            var left = ev.clientX - this.offsetLeft;
+            var top = ev.clientY - this.offsetTop;
+            document.onmousemove = function (e) {
+                var eb = e || event;
+                var newLeft = eb.clientX - left;
+                var newTop = eb.clientY - top;
+                oBox1.style.left = newLeft + 'px';
+                oBox1.style.top = newTop + 'px';
+                var obLeft = oBox2.offsetLeft;
+                var obTop = oBox2.offsetTop;
+                var obx = oBox1.clientWidth;
+                var ob= oBox1.clientHeight;
+                var obxR = document.documentElement.clientWidth - ( oBox2.offsetLeft + oBox2.clientWidth);
+                var foo = (newLeft+ obx) <= obLeft || (newTop + ob) <= obTop;
+                if(!foo){
+                    oBox2.style.background = 'red';
+                }else{
+                    oBox2.style.background='yellow'
+                }
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    oBox1.style.left = newLeft + 'px';
+                    oBox1.style.top = newTop + 'px';
+                }
+               
+            }
+           
+        }
+        function getWrap(){
+
+        }
+
+        // oBox1.offsetLeft //->距离左侧距离
+        // oBox1.offsetTop //距离顶部距离
+        // event.clientX //鼠标移动X的距离
+        // event.clientY //鼠标移动的Y距离
+        console.log( oBox1.offsetLeft, oBox1.offsetTop,document.documentElement.clientWidth - ( oBox1.offsetLeft + oBox1.clientWidth))
+    </script>
+</body>
+
+</html>

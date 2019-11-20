@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搜索列表</title>
+</head>
+
+<body>
+    <input type="text" id="input" placeholder="请输入用户名">
+    <button id="btn">搜索</button>
+    <ul id="box"></ul>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        function getList(){
+            $.ajax({
+                url:'http://localhost:9090/search',
+                type:'get',
+                data:{username:$('#input').val()},
+                success:function(data){
+                    console.log(data);
+                    // let arr = JSON.stringify(data)
+                    // let arr1 = JSON.parse(data);
+                    // console.log(arr1)
+                    // let html = '';
+                    // arr.forEach(item =>{
+                    //     let str = `<li><p>${item.username}</P><p>${item.password}</P></li>`;
+                    //         html += str;
+                    //         console.log(html)
+                    // })
+                    // $('#box').html('');
+                    // $('#box').append(html)
+                }
+            })
+        }
+        getList()
+        $('#btn').click(function(){
+            getList()
+        })
+    </script>
+</body>
+
+</html>

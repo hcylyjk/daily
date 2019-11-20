@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .h_help {
+            position: fixed;
+            bottom: 0;
+            right: 60px;
+        }
+
+        .h_service {
+
+            width: 200px;
+            height: 40px;
+            background-color: #ccc;
+            border-radius: 11px;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            font-size: 18px;
+        }
+
+        .h_customer {
+            display: none;
+            width: 320px;
+            height: 500px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        .h_customer_pic {
+           
+            width: 320px;
+            height: 60px;
+            padding: 5px 0 0 11px;
+            box-sizing: border-box;
+        }
+
+        .h_img {
+            float: left;
+        }
+
+        .h_img2 {
+            width: 50px;
+            height: 50px;
+        }
+
+        .h_left1 {
+            color: #fff;
+            float: left;
+            margin-left: 14px;
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+       
+
+        .h_overflow {
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .h_fix_send {
+            position: fixed;
+            bottom: 0;
+            width: 320px;
+            background-color: #fff;
+            border-top: 1px solid #ccc;
+            height: 160px;
+        }
+
+        button {
+            display: block;
+        }
+
+        .h_ajax {
+            display: block;
+            background-color: #ccc;
+            border-radius: 4px;
+        }
+
+        input {
+            width: 230px;
+            height: 60px;
+        }
+
+        .h_cuo {
+            font-size: 30px;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="h_help">
+        <div class="h_service"></div>
+        <div class="h_customer">
+            <div class="h_customer_pic">
+                <div class="h_img">
+                    <img class="h_img2">
+                </div>
+                <div class="h_left1">
+                    <p class="h_headMessage"></p>
+                    <p class="h_name">芬达猫</p>
+                </div>
+                <div class="h_cuo">×</div>
+            </div>
+            <div class="h_text">
+                <div class="h_overflow">
+                    <div class="h_left"></div>
+                    <div class="h_right"></div>
+                    <!-- 每次请求后发的对话 -->
+                    <div class="h_sever_text">
+                        <p class="h_text1"></p>
+                        <span class="h_ajax">
+                            
+                            <img class="h_img3">
+                        </span>
+                    </div>
+                </div>
+                <div class="h_fix_send">
+                    <input type="text" placeholder="请输入...">
+                    <button>发送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        //存储历史记录http://api.yunque360.com/v1/chat/chat/web-history
+        //获取头部信息http://imapi.yunque360.com/company?id=c9vev9hnp66s&_=1573711609732
+        //发送信息http://imapi.yunque360.com/pull
+        //发送数据时的地址http://imapi.yunque360.com/send
+        $('.h_service').on('click', function () {
+            $(this).css('display', 'none');
+            $('.h_customer').css('display', 'block');
+        });
+        $('.h_cuo').on('click', function () {
+            $('.h_customer').css('display', 'none');
+            $('.h_service').css('display', 'block');
+        });
+        $(function () {
+            setTimeout(function () {
+                $('.h_service').css('display', 'none');
+                $('.h_customer').css('display', 'block');
+            }, 2000)
+        });
+        window.onload = function () {
+            $.ajax({
+                url: 'http://imapi.yunque360.com/company',
+                type: 'get',
+                data: { id: 'c9vev9hnp66s' },
+                dataType: 'json',
+                success: function (data) {
+                   var $head = data.data.btnrule;
+                   var $changeHead = JSON.parse($head);
+                   var $mwindowrule = JSON.parse(data.data.mwindowrule);
+                   console.log($changeHead);
+                   console.log($mwindowrule.brandAds)
+                    $('.h_service').css('background',`${$changeHead.btnColor}`);
+                    $('.h_customer_pic').css('background',`${$changeHead.btnColor}`);
+                    $('.h_service').text(`${$changeHead.onlineText}`);
+                    $('.h_img2').attr('src',`http://yunque-company.cdn.yunque360.com/${$mwindowrule.companyLogo}`);
+                    $('.h_headMessage').text(`${$mwindowrule.dialogTitle}`);
+                    $('h_left').html(`${$mwindowrule.brandAds}`)
+                }
+            })
+        }
+
+        $.ajax({
+            url: 'http://imapi.yunque360.com/pull',
+            type: 'post',
+            data: { uid: 'u38h8hhhtfgbj', company_id: 'c9vev9hnp66s', from: 4, worker_name: '1002' },
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+
+            }
+        })
+        $.ajax({
+            url: 'http://api.yunque360.com/v1/chat/chat/web-history',
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+            }
+        })
+
+        $.ajax({
+            url: 'http://imapi.yunque360.com/send',
+            type: 'post',
+            dataType: 'json',
+            data: { uid: 'u38h8hhhtfgbj', company_id: 'c9vev9hnp66s', body: '广告', cmd: 'user', cmicrotime: '1573717782801', worker_name: '1002' },
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    </script>
+</body>
+
+</html>

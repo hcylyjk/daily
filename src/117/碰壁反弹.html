@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .cvs {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas class="cvs" width="600" height="200"></canvas>
+    <script>
+        var cvs = document.querySelector('.cvs');
+        var ctx = cvs.getContext('2d');
+        var x = 0, y = 0;
+        var left = true, top_1 = true;
+        setInterval(function () {
+            ctx.clearRect(0, 0, cvs.width, cvs.height);
+            if (left) {
+                x++;
+                if (x >= cvs.width - 50) {
+                    left = false;
+                }
+            } else {
+                x--;
+                if (x <= 0) {
+                    left = true;
+                }
+            }
+
+            if (top_1) {
+                y++;
+                if (y >= cvs.height - 50) {
+                    top_1 = false;
+                }
+            } else {
+                y--;
+                if (y <= 0) {
+                    top_1 = true;
+                }
+            }
+            ctx.beginPath();
+            ctx.fillStyle = 'green';
+            ctx.fillRect(x, y, 50, 50);
+            ctx.closePath();
+        })
+    // ctx.beginPath();
+    // ctx.fillStyle= 'green';
+    // ctx.fillRect(x,y,50,50);
+    // ctx.closePath();
+
+
+    </script>
+</body>
+
+</html>

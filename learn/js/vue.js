@@ -92,6 +92,7 @@
     function makeMap(str, expectsLowerCase) {
         var map = Object.create(null);//已经创建了一个空对象，没有原型的那种
         var list = str.split(',');//转数组
+       
         for (var i = 0; i < list.length; i++) {
             map[list[i]] = true;
         }
@@ -100,7 +101,7 @@
             ? function (val) { return map[val.toLowerCase()] }
             : function (val) { return map[val] }
     }
-
+   
     var isBuiltInTag = makeMap('slot,component', true);// console.log(isBuiltInTag);console.dir(isBuiltInTag);
 
     var isReservedAttribute = makeMap('key,ref,slot,slot-scope,is');//console.log(isReservedAttribute);
@@ -222,7 +223,7 @@
 
   var identity = function(_){return _;}
 
- //总结：
+   
 
 
 

@@ -28,3 +28,8 @@ freeze() 返回和传入的参数相同的对象
 
     8.fn.bind()改变this指向，一般用于匿名函数
 
+    9.JSON.stringify(val,null,num) val->要进行数据的转化 num-> 缩进的多少格
+
+    10.str.split()以什么分割，转成数组
+
+    11.obj.hasOwnProperty(prop)->true/false

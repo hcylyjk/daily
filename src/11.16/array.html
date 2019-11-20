@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组</title>
+</head>
+<body>
+    
+
+    <script>
+        //可迭代数组有一个next方法，由于打印
+        var arr = ['h','k','o','y'];
+        var eArr = arr[Symbol.iterator]();//Array Iterator{}
+        console.log(eArr,arr); 
+        console.log(eArr.next());//->返回一个对象{value:'h',done:false}
+        // for(let letter of eArr){
+        //     console.log(letter);
+        // }   
+
+       
+    </script>
+</body>
+</html>

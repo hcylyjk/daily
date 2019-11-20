@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .can{
+            background-color:#ccc;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="1200" height="600" class="can" id="can"></canvas>
+    <script>
+        var cvs = document.getElementById('can');
+        console.log(cvs);
+        
+        var ctx = cvs.getContext('2d');//绘制上下文
+        // ctx.beginPath();//开始路径绘制
+        // ctx.moveTo(100,100);//起始点
+        // ctx.lineTo(300,100);//路径
+        // ctx.lineTo(200,200);
+        // ctx.closePath();//关闭绘制路径
+
+        // ctx.lineWidth = 2;
+        // ctx.strokeStyle = 'green';//描线的颜色
+        // ctx.stroke();//执行绘制
+     
+        ctx.beginPath();
+        ctx.arc(200,200,100,0,2*Math.PI);
+        ctx.fillStyle = 'red';
+        ctx.fill();
+        ctx.closePath();
+        //图形组合方式
+        // ctx.globalCompositeOperation = 'source-in';
+        // ctx.globalCompositeOperation = 'source-out';
+        ctx.globalCompositeOperation = 'lighter';
+        ctx.beginPath();
+        ctx.arc(300,200,100,0,2*Math.PI);
+        ctx.fillStyle = 'blue';
+        ctx.fill();
+        ctx.closePath();
+
+        </script>
+</body>
+</html>
